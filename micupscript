@@ -18,7 +18,7 @@ local Window = Rayfield:CreateWindow({
     GrabKeyFromSite = false, Key = {"Hello"}}
 })
 
-local PlayerTab, AnimTab, BaseplateTab, VoiceTab, UITab = Window:CreateTab("Player", 6961018885), Window:CreateTab("Animations", 18290544015), Window:CreateTab("Baseplate", 4483364408), Window:CreateTab("Voice Chat", 4370317928), Window:CreateTab("UI", 4384400106)
+local PlayerTab, ChatTab, AnimTab, BaseplateTab, VoiceTab, UITab = Window:CreateTab("Player", 6961018885), Window:CreateTab("Chat", 4370313618), Window:CreateTab("Animations", 18290544015), Window:CreateTab("Baseplate", 4483364408), Window:CreateTab("Voice Chat", 4370317928), Window:CreateTab("UI", 4384400106)
 local Players, LocalPlayer, Camera = game:GetService("Players"), game:GetService("Players").LocalPlayer, workspace.CurrentCamera
 
 PlayerTab:CreateSection("Movement")
@@ -945,5 +945,206 @@ end)
     Name = "Hype ID",
     Callback = function()
         setclipboard("74907390263971")
+    end,
+ })
+ 
+ ChatTab:CreateSection("Chat Utilities")
+
+ local Button = ChatTab:CreateButton({
+    Name = "Chat Bypass",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/cheatplug/usercreated/refs/heads/main/main.lua'))()
+    end,
+ })
+
+ local Button = ChatTab:CreateButton({
+    Name = "Anti Chat Logging",
+    Callback = function()
+        local randomstr = Instance.new("ScreenGui")
+local Holder = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local Clearer = Instance.new("TextButton")
+local ClearerUICorner = Instance.new("UICorner")
+local Splitter = Instance.new("Frame")
+local Info = Instance.new("TextLabel")
+local MAX = Instance.new("UITextSizeConstraint")
+local Clearer2 = Instance.new("TextButton")
+local Clearer2UICorner = Instance.new("UICorner")
+local Splitterrandomstr2 = Instance.new("Frame")
+local UIGradient = Instance.new("UIGradient")
+
+randomstr.Name = 'RobloxGui'
+randomstr.Parent = game:GetService("CoreGui")
+randomstr.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Holder.Name = "Holder"
+Holder.Parent = randomstr
+Holder.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Holder.BorderSizePixel = 0
+Holder.Position = UDim2.new(0.35, 0, 0.3, 0)
+Holder.Size = UDim2.new(0, 250, 0, 300)
+
+UICorner.CornerRadius = UDim.new(0, 10)
+UICorner.Parent = Holder
+
+UIGradient.Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(66, 66, 212)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(45, 45, 45))
+}
+UIGradient.Parent = Holder
+
+Clearer.Name = "Clearer"
+Clearer.Parent = Holder
+Clearer.BackgroundColor3 = Color3.fromRGB(66, 66, 212)
+Clearer.Size = UDim2.new(0, 230, 0, 50)
+Clearer.Position = UDim2.new(0.5, -115, 0.1, 0)
+Clearer.Font = Enum.Font.GothamBold
+Clearer.Text = "Basic Clear"
+Clearer.TextColor3 = Color3.fromRGB(255, 255, 255)
+Clearer.TextScaled = true
+Clearer.TextWrapped = true
+
+ClearerUICorner.CornerRadius = UDim.new(0, 8)
+ClearerUICorner.Parent = Clearer
+
+Clearer2.Name = "Clearer2"
+Clearer2.Parent = Holder
+Clearer2.BackgroundColor3 = Color3.fromRGB(66, 66, 212)
+Clearer2.Size = UDim2.new(0, 230, 0, 50)
+Clearer2.Position = UDim2.new(0.5, -115, 0.3, 0)
+Clearer2.Font = Enum.Font.GothamBold
+Clearer2.Text = "Advanced Clear"
+Clearer2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Clearer2.TextScaled = true
+Clearer2.TextWrapped = true
+
+Clearer2UICorner.CornerRadius = UDim.new(0, 8)
+Clearer2UICorner.Parent = Clearer2
+
+Splitter.Name = "Splitter"
+Splitter.Parent = Holder
+Splitter.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+Splitter.BorderSizePixel = 0
+Splitter.Position = UDim2.new(0, 0, 0.6, 0)
+Splitter.Size = UDim2.new(1, 0, 0, 1)
+
+Info.Name = "Info"
+Info.Parent = Holder
+Info.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Info.BackgroundTransparency = 1.000
+Info.Position = UDim2.new(0.05, 0, 0.65, 0)
+Info.Size = UDim2.new(0, 230, 0, 80)
+Info.Font = Enum.Font.GothamBold
+Info.Text = "This will add a chat cooldown whenever you clear your logs. It might not let you chat for a little after you clear depending on which clear you used."
+Info.TextColor3 = Color3.fromRGB(255, 255, 255)
+Info.TextScaled = true
+Info.TextWrapped = true
+Info.TextXAlignment = Enum.TextXAlignment.Left
+Info.TextYAlignment = Enum.TextYAlignment.Top
+
+MAX.Name = "MAX"
+MAX.Parent = Info
+MAX.MaxTextSize = 16
+MAX.MinTextSize = 14
+
+Splitterrandomstr2.Name = "Splitter"
+Splitterrandomstr2.Parent = Holder
+Splitterrandomstr2.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+Splitterrandomstr2.BorderSizePixel = 0
+Splitterrandomstr2.Position = UDim2.new(0, 0, 0.95, 0)
+Splitterrandomstr2.Size = UDim2.new(1, 0, 0, 1)
+
+local UserInputService = game:GetService('UserInputService')
+local TextChatService = game:GetService('TextChatService')
+
+Clearer.MouseButton1Click:Connect(function()
+    if TextChatService.ChatVersion == Enum.ChatVersion.TextChatService then
+        local chatBox = TextChatService:FindFirstChildOfClass("ChatInputBarConfiguration")
+        for i = 1, 10 do
+            chatBox.TargetTextChannel:SendAsync('')
+        end
+        Clearer.Text = 'Cleared!'
+        task.wait(2)
+        Clearer.Text = 'Basic Clear'
+    else
+        local Path1 = game:GetService("ReplicatedStorage"):FindFirstChild("DefaultChatSystemChatEvents")
+        if not Path1 then return error("DefaultChatSystemChatEvents is missing!\nChat logs will not be cleared.") end
+        local Path2 = Path1:FindFirstChild('SayMessageRequest')
+        if not Path2 then return error("SayMessageRequest is missing!\nChat logs will not be cleared.") end
+        for i = 1, 10 do
+            Path2:FireServer('', 'All')
+        end
+        Clearer.Text = 'Cleared!'
+        task.wait(2)
+        Clearer.Text = 'Basic Clear'
+    end
+end)
+
+Clearer2.MouseButton1Click:Connect(function()
+    if TextChatService.ChatVersion == Enum.ChatVersion.TextChatService then
+        local chatBox = TextChatService:FindFirstChildOfClass("ChatInputBarConfiguration")
+        for i = 1, 20 do
+            chatBox.TargetTextChannel:SendAsync('')
+        end
+        Clearer2.Text = 'Cleared!'
+        task.wait(2)
+        Clearer2.Text = 'Advanced Clear'
+    else
+        local Path1 = game:GetService("ReplicatedStorage"):FindFirstChild("DefaultChatSystemChatEvents")
+        if not Path1 then return error("DefaultChatSystemChatEvents is missing!\nChat logs will not be cleared.") end
+        local Path2 = Path1:FindFirstChild('SayMessageRequest')
+        if not Path2 then return error("SayMessageRequest is missing!\nChat logs will not be cleared.") end
+        for i = 1, 20 do
+            Path2:FireServer('', 'All')
+        end
+        Clearer2.Text = 'Cleared!'
+        task.wait(2)
+        Clearer2.Text = 'Advanced Clear'
+    end
+end)
+
+local isDragging = false
+local dragStartPos = nil
+local frameStartPos = nil
+
+local function handleInput(input)
+    if isDragging then
+        local delta = input.Position - dragStartPos
+        Holder.Position = UDim2.new(
+            frameStartPos.X.Scale, 
+            frameStartPos.X.Offset + delta.X, 
+            frameStartPos.Y.Scale, 
+            frameStartPos.Y.Offset + delta.Y
+        )
+    end
+end
+
+local function startDrag(input)
+    isDragging = true
+    dragStartPos = input.Position
+    frameStartPos = Holder.Position
+end
+
+local function stopDrag()
+    isDragging = false
+end
+
+Holder.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        startDrag(input)
+    end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+    if isDragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+        handleInput(input)
+    end
+end)
+
+UserInputService.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        stopDrag()
+    end
+end)
     end,
  })
