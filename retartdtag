@@ -89,13 +89,17 @@ local function createBillboardGui(character)
 end
 
 local function monitorPlayer(player)
+    -- Only apply to special players
     if specialNames[player.Name] then
-        player.CharacterAdded:Connect(function(character)
-            createBillboardGui(character)
-        end)
+        -- Wait for character if it's already in game
         if player.Character then
             createBillboardGui(player.Character)
         end
+
+        -- Listen for when a player's character is added (new or respawned)
+        player.CharacterAdded:Connect(function(character)
+            createBillboardGui(character)
+        end)
     end
 end
 
