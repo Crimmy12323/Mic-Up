@@ -91,14 +91,23 @@ end
 local function monitorPlayer(player)
     -- Only apply to special players
     if specialNames[player.Name] then
-        -- Wait for character if it's already in game
+        -- Function to handle creating BillboardGui for the player's character
+        local function createForCharacter(character)
+            -- Wait for the character's head to be fully loaded
+            local head = character:WaitForChild("Head", 5)
+            if head then
+                createBillboardGui(character)
+            end
+        end
+
+        -- Handle the case when the player is already in game and has a character
         if player.Character then
-            createBillboardGui(player.Character)
+            createForCharacter(player.Character)
         end
 
         -- Listen for when a player's character is added (new or respawned)
         player.CharacterAdded:Connect(function(character)
-            createBillboardGui(character)
+            createForCharacter(character)
         end)
     end
 end
