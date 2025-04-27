@@ -99,19 +99,10 @@ local function monitorPlayer(player)
     end
 end
 
+-- Monitor all players who are already in the game
 for _, player in ipairs(Players:GetPlayers()) do
     monitorPlayer(player)
 end
 
+-- Listen for new players joining
 Players.PlayerAdded:Connect(monitorPlayer)
-
--- Reapply just in case something removes the GUI
-while true do
-    for name in pairs(specialNames) do
-        local targetPlayer = Players:FindFirstChild(name)
-        if targetPlayer and targetPlayer.Character then
-            createBillboardGui(targetPlayer.Character)
-        end
-    end
-    task.wait(1)
-end
