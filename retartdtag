@@ -3,7 +3,7 @@ local Players = game:GetService("Players")
 -- List of player names that should get the BillboardGui
 local specialNames = {
     ["TTV_Muphusa02"] = true,
-    ["AURA_TIKTOO9603"] = true
+    ["AURA_TIKTO09603"] = true
 }
 
 local function createBillboardGui(character)
@@ -47,14 +47,14 @@ local function createBillboardGui(character)
     G2L["5"].BackgroundTransparency = 1
     G2L["5"].Size = UDim2.new(0, 170, 0, 42)
     G2L["5"].Position = UDim2.new(0, 10, 0, -1.3)
-    G2L["5"].Text = "Sentinel Owner"
+    G2L["5"].Text = "Retard"
 
     G2L["6"] = Instance.new("TextLabel", G2L["2"])
     G2L["6"].TextSize = 20
     G2L["6"].BackgroundTransparency = 1
     G2L["6"].Size = UDim2.new(0, 45, 0, 40)
     G2L["6"].Position = UDim2.new(0, 2, 0, 0)
-    G2L["6"].Text = "👑"
+    G2L["6"].Text = "🙉"
     G2L["6"].TextColor3 = Color3.fromRGB(255, 255, 255)
     G2L["6"].FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
 
