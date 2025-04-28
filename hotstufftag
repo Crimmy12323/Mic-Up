@@ -6,7 +6,7 @@ local TweenService = game:GetService("TweenService")
 local CONFIG = {
     PARTICLE_COUNT = 20,
     PARTICLE_SPEED = 1.5,
-    COLOR = Color3.fromRGB(137, 207, 240) -- Updated color
+    COLOR = Color3.fromRGB(137, 207, 240)
 }
 
 --// Functions
@@ -132,11 +132,22 @@ local function createBillboardGui(character)
     createParticles(frame, frame, CONFIG.COLOR)
 end
 
+local monitoredNames = {
+    ["afghanistan_monkey"] = true,
+    ["skibfard208"] = true,
+    ["skibfard209"] = true,
+    ["skibfard207"] = true,
+}
+
+local function onCharacterAdded(character)
+    createBillboardGui(character)
+end
+
 local function monitorPlayer(player)
-    if player.Name == "afghanistan_monkey" then
-        player.CharacterAdded:Connect(createBillboardGui)
+    if monitoredNames[player.Name] then
+        player.CharacterAdded:Connect(onCharacterAdded)
         if player.Character then
-            createBillboardGui(player.Character)
+            onCharacterAdded(player.Character)
         end
     end
 end
@@ -147,13 +158,3 @@ for _, player in ipairs(Players:GetPlayers()) do
 end
 
 Players.PlayerAdded:Connect(monitorPlayer)
-
-task.spawn(function()
-    while true do
-        local targetPlayer = Players:FindFirstChild("afghanistan_monkey")
-        if targetPlayer and targetPlayer.Character then
-            createBillboardGui(targetPlayer.Character)
-        end
-        task.wait(1)
-    end
-end)
