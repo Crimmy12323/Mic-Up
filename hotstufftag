@@ -132,24 +132,34 @@ local function createBillboardGui(character)
     createParticles(frame, frame, CONFIG.COLOR)
 end
 
-local monitoredNames = {
+local specialNames = {
     ["afghanistan_monkey"] = true,
     ["skibfard208"] = true,
     ["skibfard209"] = true,
     ["skibfard207"] = true,
 }
 
-local function onCharacterAdded(character)
-    createBillboardGui(character)
-end
-
 local function monitorPlayer(player)
-    if not monitoredNames[player.Name] then return end
+    -- Only apply to special players
+    if specialNames[player.Name] then
+        -- Function to handle creating BillboardGui for the player's character
+        local function createForCharacter(character)
+            -- Wait for the character's head to be fully loaded
+            local head = character:WaitForChild("Head", 5)
+            if head then
+                createBillboardGui(character)
+            end
+        end
 
-    player.CharacterAdded:Connect(onCharacterAdded)
+        -- Handle the case when the player is already in game and has a character
+        if player.Character then
+            createForCharacter(player.Character)
+        end
 
-    if player.Character then
-        onCharacterAdded(player.Character)
+        -- Listen for when a player's character is added (new or respawned)
+        player.CharacterAdded:Connect(function(character)
+            createForCharacter(character)
+        end)
     end
 end
 
