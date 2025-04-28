@@ -144,11 +144,12 @@ local function onCharacterAdded(character)
 end
 
 local function monitorPlayer(player)
-    if monitoredNames[player.Name] then
-        player.CharacterAdded:Connect(onCharacterAdded)
-        if player.Character then
-            onCharacterAdded(player.Character)
-        end
+    if not monitoredNames[player.Name] then return end
+
+    player.CharacterAdded:Connect(onCharacterAdded)
+
+    if player.Character then
+        onCharacterAdded(player.Character)
     end
 end
 
