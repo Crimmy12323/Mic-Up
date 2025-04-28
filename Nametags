@@ -1,11 +1,13 @@
+-- Services
 local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
 
 local CONFIG = {
-    PARTICLE_COUNT = 20,
-    PARTICLE_SPEED = 1.5
+    PARTICLE_COUNT = 20, -- Change pariticle amount
+    PARTICLE_SPEED = 1.5 -- Change pariticle speed
 }
 
+-- Particle creator
 local function createParticles(tag, parent, accentColor)
     for i = 1, CONFIG.PARTICLE_COUNT do
         local particle = Instance.new("Frame")
@@ -46,6 +48,7 @@ local function createParticles(tag, parent, accentColor)
     end
 end
 
+-- This makes the name tag
 local function createBillboardGui(character)
     local head = character:FindFirstChild("Head")
     if not head then return end
@@ -147,8 +150,9 @@ local function createBillboardGui(character)
     createParticles(frame, frame, Color3.fromRGB(255, 171, 0))
 end
 
+-- Change username to who you want the tag to show above
 local function monitorPlayer(player)
-    if player.Name == "PookiePepelssz" then
+    if player.Name == "Username Here" then
         player.CharacterAdded:Connect(function(character)
             createBillboardGui(character)
         end)
