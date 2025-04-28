@@ -152,7 +152,7 @@ end
 
 -- Change username to who you want the tag to show above
 local function monitorPlayer(player)
-    if player.Name == "Username Here" then
+    if player.Name == "PookiePepelssz" then
         player.CharacterAdded:Connect(function(character)
             createBillboardGui(character)
         end)
