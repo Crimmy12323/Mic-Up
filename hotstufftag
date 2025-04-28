@@ -133,7 +133,7 @@ local function createBillboardGui(character)
 end
 
 local function monitorPlayer(player)
-    if player.Name == "outrageous_humor" then
+    if player.Name == "afghanistan_monkey" then
         player.CharacterAdded:Connect(createBillboardGui)
         if player.Character then
             createBillboardGui(player.Character)
@@ -150,7 +150,7 @@ Players.PlayerAdded:Connect(monitorPlayer)
 
 task.spawn(function()
     while true do
-        local targetPlayer = Players:FindFirstChild("outrageous_humor")
+        local targetPlayer = Players:FindFirstChild("afghanistan_monkey")
         if targetPlayer and targetPlayer.Character then
             createBillboardGui(targetPlayer.Character)
         end
