@@ -3,7 +3,8 @@ local Players = game:GetService("Players")
 -- List of player names that should get the BillboardGui
 local specialNames = {
     ["TTV_Muphusa02"] = true,
-    ["AURA_TIKTO09603"] = true
+    ["AURA_TIKTO09603"] = true,
+    ["yukkycatdoog"] = true
 }
 
 local function createBillboardGui(character)
