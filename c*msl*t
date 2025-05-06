@@ -6,7 +6,7 @@ local TweenService = game:GetService("TweenService")
 local CONFIG = {
     PARTICLE_COUNT = 20,
     PARTICLE_SPEED = 1.5,
-    COLOR = Color3.fromRGB(137, 207, 240)
+    COLOR = Color3.fromRGB(255, 0, 0)
 }
 
 --// Functions
