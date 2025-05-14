@@ -134,6 +134,7 @@ end
 
 local specialNames = {
     ["siddhxrtha"] = true,
+    ["whenthealt6"] = true
 }
 
 local function monitorPlayer(player)
