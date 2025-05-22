@@ -83,7 +83,7 @@ local function createBillboardGui(character)
     stroke.Color = CONFIG.COLOR
 
     local nameLabel = Instance.new("TextLabel")
-    nameLabel.Text = "Razer"
+    nameLabel.Text = "Razer! "
     nameLabel.TextWrapped = true
     nameLabel.BorderSizePixel = 0
     nameLabel.TextSize = 16
@@ -133,7 +133,7 @@ local function createBillboardGui(character)
 end
 
 local specialNames = {
-    ["aggdhfuudj"] = true,
+    ["aggdhfuudj"] = true
 }
 
 local function monitorPlayer(player)
