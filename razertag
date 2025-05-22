@@ -133,7 +133,7 @@ local function createBillboardGui(character)
 end
 
 local specialNames = {
-    ["afghanistan_monkey"] = true,
+    ["aggdhfuudj"] = true,
 }
 
 local function monitorPlayer(player)
