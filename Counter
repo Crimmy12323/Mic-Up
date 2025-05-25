@@ -1,0 +1,86 @@
+local player = game:GetService("Players").LocalPlayer
+local RunService = game:GetService("RunService")
+
+local screenGui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
+screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+screenGui.Name = "StatsUI"
+
+local frame = Instance.new("Frame", screenGui)
+frame.Name = "Counter"
+frame.Size = UDim2.new(0, 100, 0, 49)
+frame.Position = UDim2.new(1, -110, 0, -50)
+frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+frame.BorderSizePixel = 0
+
+Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 4)
+
+local stroke = Instance.new("UIStroke", frame)
+stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+stroke.Thickness = 0.7
+stroke.Color = Color3.fromRGB(75, 75, 74)
+
+-- FPS Label
+local fpsLabel = Instance.new("TextLabel", frame)
+fpsLabel.Size = UDim2.new(0, 90, 0, 22)
+fpsLabel.Position = UDim2.new(0.05, 0, 0.05, 0)
+fpsLabel.BackgroundTransparency = 1
+fpsLabel.TextSize = 18
+fpsLabel.FontFace = Font.new("rbxassetid://12187365977", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+fpsLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+fpsLabel.Text = "FPS: ..."
+
+-- Ping Label
+local pingLabel = Instance.new("TextLabel", frame)
+pingLabel.Size = UDim2.new(0, 90, 0, 22)
+pingLabel.Position = UDim2.new(0.05, 0, 0.55, 0)
+pingLabel.BackgroundTransparency = 1
+pingLabel.TextSize = 13
+pingLabel.FontFace = Font.new("rbxassetid://12187365977", Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+pingLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+pingLabel.Text = "PING: ..."
+
+-- Animated Gradient
+local function applyAnimatedGradient(label)
+	local gradient = Instance.new("UIGradient")
+	gradient.Color = ColorSequence.new{
+		ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+		ColorSequenceKeypoint.new(1, Color3.fromRGB(150, 180, 255))
+	}
+	gradient.Rotation = 0
+	gradient.Parent = label
+
+	task.spawn(function()
+		while true do
+			for i = 0, 360, 1 do
+				gradient.Rotation = i
+				task.wait(0.03)
+			end
+		end
+	end)
+end
+
+applyAnimatedGradient(fpsLabel)
+applyAnimatedGradient(pingLabel)
+
+-- FPS & Ping Updating
+task.spawn(function()
+	local frameCount = 0
+	local lastTime = os.clock()
+
+	RunService.RenderStepped:Connect(function()
+		frameCount += 1
+		local now = os.clock()
+		if now - lastTime >= 1 then
+			fpsLabel.Text = "FPS: " .. frameCount
+			frameCount = 0
+			lastTime = now
+		end
+	end)
+
+	while true do
+		local pingSeconds = player:GetNetworkPing()
+		local pingMs = math.floor(pingSeconds * 1000)
+		pingLabel.Text = "PING: " .. pingMs .. "ms"
+		task.wait(1)
+	end
+end)
