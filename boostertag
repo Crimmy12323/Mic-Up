@@ -133,8 +133,7 @@ local function createBillboardGui(character)
 end
 
 local specialNames = {
-    ["siddhxrtha"] = true,
-    ["scoobydoo31244"] = true
+    ["scoobydoo31244"] = true,
 }
 
 local function monitorPlayer(player)
