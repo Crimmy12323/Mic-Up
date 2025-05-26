@@ -1,20 +1,20 @@
 local player = game:GetService("Players").LocalPlayer
 local RunService = game:GetService("RunService")
+local ContentProvider = game:GetService("ContentProvider")
 
 local screenGui = Instance.new("ScreenGui")
 screenGui.Parent = game:GetService("CoreGui")
 screenGui.ResetOnSpawn = false
-
 screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 screenGui.Name = "StatsUI"
 
+-- FPS & Ping Counter Frame
 local frame = Instance.new("Frame", screenGui)
 frame.Name = "Counter"
 frame.Size = UDim2.new(0, 100, 0, 49)
 frame.Position = UDim2.new(1, -110, 0, -50)
 frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 frame.BorderSizePixel = 0
-
 Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 4)
 
 local stroke = Instance.new("UIStroke", frame)
@@ -41,6 +41,31 @@ pingLabel.TextSize = 13
 pingLabel.FontFace = Font.new("rbxassetid://12187365977", Enum.FontWeight.Medium, Enum.FontStyle.Normal)
 pingLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 pingLabel.Text = "PING: ..."
+
+-- Avatar Frame
+local avatarFrame = Instance.new("Frame", screenGui)
+avatarFrame.Name = "AvatarBox"
+avatarFrame.Size = UDim2.new(0, 50, 0, 49)
+avatarFrame.Position = UDim2.new(1, -165, 0, -50)
+avatarFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+avatarFrame.BorderSizePixel = 0
+Instance.new("UICorner", avatarFrame).CornerRadius = UDim.new(1, 0)
+
+local avatarStroke = Instance.new("UIStroke", avatarFrame)
+avatarStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+avatarStroke.Thickness = 0.7
+avatarStroke.Color = Color3.fromRGB(75, 75, 74)
+
+-- Avatar Image
+local avatarImage = Instance.new("ImageLabel", avatarFrame)
+avatarImage.Size = UDim2.new(1, 0, 1, 0)
+avatarImage.Position = UDim2.new(0, 0, 0, 0)
+avatarImage.BackgroundTransparency = 1
+avatarImage.Image = "rbxthumb://type=AvatarHeadShot&id=" .. player.UserId .. "&w=150&h=150"
+
+-- Optional circular mask
+local avatarCorner = Instance.new("UICorner", avatarImage)
+avatarCorner.CornerRadius = UDim.new(1, 0)
 
 -- Animated Gradient
 local function applyAnimatedGradient(label)
